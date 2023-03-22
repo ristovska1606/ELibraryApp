@@ -23,4 +23,16 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    public User() {
+    }
+
+    public User(String username, Long version, String name, String surname, String password, Role role) {
+        this.username = username;
+        this.version = version;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.role = role;
+    }
 }
