@@ -12,12 +12,12 @@ public interface BookService {
 
     List<Book> findAll();
     Optional<Book> findById(Long id);
-    Optional<Book> save(String name, Category category, Author author, Integer availableCopies);
+    Optional<Book> save(String name, Category category, Long authorId, Integer availableCopies);
     Optional<Book> save(BookDto bookDto);
-    Optional<Book> edit(Long id,String name, Category category, Author author, Integer availableCopies);
+    Optional<Book> edit(Long id,String name,  Category category, Long authorId, Integer availableCopies);
     Optional<Book> edit(Long id,BookDto bookDto);
     void delete(Long id);
-    Optional<Book> findBookByAuthor(Long authorId);
+    List<Book> findBooksByAuthor(Long authorId);
 
 
 }
