@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-
+    void deleteAuthorByName(String name);
 }
