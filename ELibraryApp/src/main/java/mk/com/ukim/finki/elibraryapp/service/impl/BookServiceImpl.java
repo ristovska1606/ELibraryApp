@@ -7,6 +7,7 @@ import mk.com.ukim.finki.elibraryapp.model.dto.BookDto;
 import mk.com.ukim.finki.elibraryapp.model.enums.Category;
 import mk.com.ukim.finki.elibraryapp.model.exceptions.AuthorNotFoundException;
 import mk.com.ukim.finki.elibraryapp.model.exceptions.BookNotFoundException;
+import mk.com.ukim.finki.elibraryapp.model.exceptions.ZeroAvailableCopiesException;
 import mk.com.ukim.finki.elibraryapp.repository.AuthorRepository;
 import mk.com.ukim.finki.elibraryapp.repository.BookRepository;
 import mk.com.ukim.finki.elibraryapp.repository.CountryRepository;
@@ -88,5 +89,16 @@ public class BookServiceImpl implements BookService {
     public List<Book> findBooksByAuthor(Long authorId) {
         Author author = this.authorRepository.findById(authorId).orElseThrow(() -> new AuthorNotFoundException());
         return this.bookRepository.findBooksByAuthor(author);
+    }
+
+    @Override
+    public Optional<Book> markAsTaken(Long id) {
+        Book book = this.bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException());
+        int availableCopies = book.getAvailableCopies();
+        if(availableCopies == 0)
+            throw new ZeroAvailableCopiesException();
+        book.setAvailableCopies(availableCopies-1);
+        this.bookRepository.save(book);
+        return Optional.of(book);
     }
 }

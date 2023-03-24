@@ -1,10 +1,10 @@
 package mk.com.ukim.finki.elibraryapp;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ELibraryAppApplicationTests {
+public class ELibraryAppApplicationTests {
 
     @Test
     void contextLoads() {

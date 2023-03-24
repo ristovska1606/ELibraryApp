@@ -19,5 +19,6 @@ public interface BookService {
     void delete(Long id);
     List<Book> findBooksByAuthor(Long authorId);
 
+    Optional<Book> markAsTaken(Long id);
 
 }
