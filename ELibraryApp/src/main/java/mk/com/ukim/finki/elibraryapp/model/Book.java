@@ -1,5 +1,6 @@
 package mk.com.ukim.finki.elibraryapp.model;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 import mk.com.ukim.finki.elibraryapp.model.enums.Category;

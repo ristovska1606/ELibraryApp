@@ -33,12 +33,14 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public Optional<Country> save(String name, String continent) {
         Country country = new Country(name, continent);
+        this.countryRepository.save(country);
         return Optional.of(country);
     }
 
     @Override
     public Optional<Country> save(CountryDto countryDto) {
         Country country = new Country(countryDto.getName(), countryDto.getContinent());
+        this.countryRepository.save(country);
         return Optional.of(country);
     }
 
@@ -47,6 +49,7 @@ public class CountryServiceImpl implements CountryService {
         Country country = this.countryRepository.findById(id).orElseThrow(() -> new CountryNotFoundException());
         country.setName(name);
         country.setContinent(continent);
+        this.countryRepository.save(country);
         return Optional.of(country);
     }
 
@@ -55,6 +58,7 @@ public class CountryServiceImpl implements CountryService {
         Country country = this.countryRepository.findById(id).orElseThrow(() -> new CountryNotFoundException());
         country.setName(countryDto.getName());
         country.setContinent(countryDto.getContinent());
+        this.countryRepository.save(country);
         return Optional.of(country);
     }
 

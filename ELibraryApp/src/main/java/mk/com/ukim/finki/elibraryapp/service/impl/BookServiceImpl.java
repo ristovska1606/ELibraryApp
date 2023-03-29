@@ -12,6 +12,8 @@ import mk.com.ukim.finki.elibraryapp.repository.AuthorRepository;
 import mk.com.ukim.finki.elibraryapp.repository.BookRepository;
 import mk.com.ukim.finki.elibraryapp.repository.CountryRepository;
 import mk.com.ukim.finki.elibraryapp.service.BookService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -101,4 +103,10 @@ public class BookServiceImpl implements BookService {
         this.bookRepository.save(book);
         return Optional.of(book);
     }
+
+    @Override
+    public Page<Book> findAllWithPagination(Pageable pageable) {
+        return this.bookRepository.findAll(pageable);
+    }
+
 }

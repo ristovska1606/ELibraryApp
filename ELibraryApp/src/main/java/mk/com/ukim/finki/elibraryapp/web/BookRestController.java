@@ -3,8 +3,10 @@ package mk.com.ukim.finki.elibraryapp.web;
 import mk.com.ukim.finki.elibraryapp.model.Book;
 import mk.com.ukim.finki.elibraryapp.model.dto.BookDto;
 import mk.com.ukim.finki.elibraryapp.service.BookService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -58,5 +60,9 @@ public class BookRestController {
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
+    @GetMapping("/pagination")
+    public Page<Book> findAllWithPagination(Pageable pageable){
+        return this.bookService.findAllWithPagination(pageable);
+    }
 
 }
