@@ -27,4 +27,8 @@ public class Author {
         this.surname = surname;
         this.country = country;
     }
+
+    public String getFullName(){
+        return name+" "+surname;
+    }
 }
