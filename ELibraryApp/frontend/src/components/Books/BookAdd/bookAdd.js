@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const BookAdd = (props) => {
 
     const navigate = useNavigate();
-    const [formData, updateFormData] = React.useState({ //za da predade state do app.js komponenatata
+    const [formData, updateFormData] = React.useState({
         name : "",
         category: 0,
         author : 0,
@@ -47,7 +47,7 @@ const BookAdd = (props) => {
                         <label>Category</label>
                         <select name="category" className="form-control" onChange={handleChange} >
                             {props.categories.map((term) =>
-                                <option value={term}>{term}</option>
+                                <option value={term.name}>{term}</option>
                             )}
                         </select>
                     </div>

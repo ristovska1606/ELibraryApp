@@ -28,14 +28,18 @@ class App extends Component{
           <div className="container">
             <BrowserRouter>
               <Routes>
-                  <Route path="/books/add" element={
-                      <BookAdd categories={this.state.categories}
-                                  authors={this.state.authors}
-                                  onAddBook={this.addBook}/>}/>
                   <Route path="/books" element={
                       <Books books={this.state.books}
                                 onDelete={this.deleteBook}
                                 onEdit={this.getBook}  />}/>
+                  <Route path="/" element={
+                      <Books books={this.state.books}
+                             onDelete={this.deleteBook}
+                             onEdit={this.getBook}  />}/>
+                  <Route path="/books/add" element={
+                      <BookAdd categories={this.state.categories}
+                               authors={this.state.authors}
+                               onAddBook={this.addBook}/>}/>
                   <Route path="/books/edit/:id" element={
                       <BookEdit categories={this.state.categories}
                                    authors={this.state.authors}
@@ -67,7 +71,7 @@ class App extends Component{
           ELibraryService.fetchAuthors()
               .then((data) => {
                   this.setState({
-                      authors: data.data //podatokot vo data
+                      authors: data.data
                   })
               })
       }
@@ -76,7 +80,7 @@ class App extends Component{
           ELibraryService.fetchCategories()
               .then((data) => {
                   this.setState({
-                      categories: data.data //podatokot vo data
+                      categories: data.data
                   })
               })
       }
@@ -104,7 +108,7 @@ class App extends Component{
               })
       }
 
-      editBook = (id,name, category, author, availableCopies) => {
+      editBook = (id, name, category, author, availableCopies) => {
           ELibraryService.editBook(id, name, category, author, availableCopies)
               .then(() =>{
                   this.loadBooks();

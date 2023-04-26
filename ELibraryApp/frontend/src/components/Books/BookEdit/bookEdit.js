@@ -22,7 +22,7 @@ const BookEdit = (props) => {
         e.preventDefault();
         const name = formData.name !== "" ? formData.name : props.book.name;
         const category = formData.category !== 0 ? formData.category : props.book.category;
-        const author = formData.author !== 0 ? formData.author.id : props.book.author.id;
+        const author = formData.author !== 0 ? formData.author : props.book.author.id;
         const availableCopies = formData.availableCopies !== 0 ? formData.availableCopies : props.book.availableCopies;
 
         props.onEditBook(props.book.id, name, category, author, availableCopies);
