@@ -51,7 +51,7 @@ class Books extends React.Component{
                                nextLabel={"next"}
                                breakLabel={<a href={"/#"}>...</a>}
                                breakClassName={"break-me"}
-                               pageClassName={"ml-3"}
+                               pageClassName={"mx-3"}
                                pageCount={pageCount}
                                marginPagesDisplayed={2}
                                pageRangeDisplayed={5}
@@ -72,7 +72,7 @@ class Books extends React.Component{
     getBooksPage = (offset, nextPageOffset) => {
         return this.props.books.map((book) => {
             return (
-                <BookTerm term={book} onDelete={this.props.onDelete} onEdit={this.props.onEdit}/>
+                <BookTerm term={book} onDelete={this.props.onDelete} onEdit={this.props.onEdit} onMarkAsTaken={this.props.onMarkAsTaken}/>
             )
         }).filter((book, index) => {
             return index>=offset && index<nextPageOffset;

@@ -6,7 +6,7 @@ const BookAdd = (props) => {
     const [formData, updateFormData] = React.useState({
         name : "",
         category: 0,
-        author : 0,
+        author : 1,
         availableCopies: 0
     })
 

@@ -38,6 +38,10 @@ const ELibraryService = {
 
     getBook:(id) => {
         return axios.get(`/books/${id}`);
+    },
+
+    markBookAsTaken: (id) => {
+        return axios.put(`/books/markAsTaken/${id}`);
     }
 }
 

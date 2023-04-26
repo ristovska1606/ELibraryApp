@@ -10,15 +10,20 @@ const bookTerm = (props) => {
             <td scope={"col"}>{props.term.availableCopies}</td>
             <td scope={"col"} className={"text-right"}>
                 <a title={"Delete"}
-                   className={"btn btn-danger"}
+                   className={"btn btn-danger m-2"}
                    onClick={() => props.onDelete(props.term.id)}>
                     Delete
                 </a>
-                <Link className={"btn btn-info ml-2"}
+                <Link className={"btn btn-info m-2"}
                       onClick={() => props.onEdit(props.term.id)}
                       to={`/books/edit/${props.term.id}`}>
                     Edit
                 </Link>
+                <a title={"MarkAsTaken"}
+                    className={"btn btn-info m-2"}
+                    onClick={() => props.onMarkAsTaken(props.term.id)}>
+                    Mark As Taken
+                </a>
             </td>
         </tr>
     )

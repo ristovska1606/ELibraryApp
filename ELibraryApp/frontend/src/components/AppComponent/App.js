@@ -30,12 +30,14 @@ class App extends Component{
               <Routes>
                   <Route path="/books" element={
                       <Books books={this.state.books}
-                                onDelete={this.deleteBook}
-                                onEdit={this.getBook}  />}/>
+                             onDelete={this.deleteBook}
+                             onEdit={this.getBook}
+                             onMarkAsTaken={this.markBookAsTaken}/>}/>
                   <Route path="/" element={
                       <Books books={this.state.books}
                              onDelete={this.deleteBook}
-                             onEdit={this.getBook}  />}/>
+                             onEdit={this.getBook}
+                             onMarkAsTaken={this.markBookAsTaken}/>}/>
                   <Route path="/books/add" element={
                       <BookAdd categories={this.state.categories}
                                authors={this.state.authors}
@@ -111,6 +113,13 @@ class App extends Component{
       editBook = (id, name, category, author, availableCopies) => {
           ELibraryService.editBook(id, name, category, author, availableCopies)
               .then(() =>{
+                  this.loadBooks();
+              });
+      }
+
+      markBookAsTaken = (id) => {
+          ELibraryService.markBookAsTaken(id)
+              .then(() => {
                   this.loadBooks();
               });
       }

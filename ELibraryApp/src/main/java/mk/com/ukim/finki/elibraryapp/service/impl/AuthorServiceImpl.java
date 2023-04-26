@@ -32,7 +32,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Optional<Author> findById(Long id) {
-        return Optional.of(this.authorRepository.findById(id).orElseThrow(() -> new AuthorNotFoundException()));
+        return this.authorRepository.findById(id);
     }
 
     @Override
