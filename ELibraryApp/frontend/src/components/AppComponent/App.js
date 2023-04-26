@@ -2,7 +2,7 @@ import logo from '../../logo.svg';
 import './App.css';
 import {Component} from "react";
 import {
-    BrowserRouter,
+    BrowserRouter as Router,
     Routes,
     Route
 } from "react-router-dom";
@@ -10,6 +10,8 @@ import Books from "../Books/BookList/books";
 import ELibraryService from "../../repository/ELibraryRepository";
 import BookEdit from "../Books/BookEdit/bookEdit";
 import BookAdd from "../Books/BookAdd/bookAdd";
+import Header from "../Header/header";
+import Categories from "../Categories/categories";
 
 class App extends Component{
   constructor(props) {
@@ -24,9 +26,11 @@ class App extends Component{
 
   render() {
     return (
-        <main>
-          <div className="container">
-            <BrowserRouter>
+        <Router>
+        <Header/>
+         <main>
+             <div className="container">
+
               <Routes>
                   <Route path="/books" element={
                       <Books books={this.state.books}
@@ -47,10 +51,13 @@ class App extends Component{
                                    authors={this.state.authors}
                                    onEditBook={this.editBook}
                                    book={this.state.selectedBook}/>}/>
+                  <Route path="/categories" element={
+                      <Categories categories={this.state.categories} />}/>
               </Routes>
-            </BrowserRouter>
+
           </div>
         </main>
+        </Router>
     )
   }
 

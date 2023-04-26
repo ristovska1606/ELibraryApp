@@ -16,10 +16,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/categories")
 public class CategoriesRestController {
 
-//    @GetMapping
-//    public List<String> findAll(){
-//        return Arrays.stream(Category.values()).map(i -> i.name()).collect(Collectors.toList());
-//    }
 
     @GetMapping
     public List<Category> findAll(){
